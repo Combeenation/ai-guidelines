@@ -17,13 +17,13 @@ Personal instructions and AI memory may supplement the guidelines but do not rep
 
 Before every task involving project code:
 
-1. Read `.ai/project/project.md` from the current repository.
-2. Use it as project context alongside the central coding guidelines, customer requirements, existing code, and enforced tooling.
-3. If the file is missing, inaccessible, or inconsistent with the code, explicitly report the issue. Do not invent missing project information.
+1. Check for `.ai/project/project.md` in the current repository and read it if it exists.
+2. Use the project description only as supporting context. The existing codebase is the source of truth for the current implementation. Customer requirements, actual project conventions, and enforced tooling take precedence over the project description. Report discrepancies; never change working code solely to match outdated documentation.
+3. If `.ai/project/project.md` is missing, **invoke and execute** the [update-project-description skill](https://github.com/Combeenation/skills/blob/master/skills/update-project-description/SKILL.md) to propose its creation based on verified repository facts. Do not create it independently or invent project information. Follow the skill's review and approval process before writing the file.
+4. If the file exists but cannot be read, report the issue. Do not guess its contents.
 
-After substantial changes that affect the project's features, architecture, integrations, data models, business rules, dependencies, or conventions:
+After substantial changes to the project's features, architecture, integrations, data models, business rules, dependencies, or conventions, **invoke and execute** the [update-project-description skill](https://github.com/Combeenation/skills/blob/master/skills/update-project-description/SKILL.md) to review the documentation and propose updates. Apply documentation changes only after user confirmation, as required by the skill.
 
-1. Retrieve and follow the [update-project-description skill](https://github.com/Combeenation/skills/blob/master/skills/update-project-description/SKILL.md).
-2. If the skill cannot be retrieved or executed, report this explicitly. Do not claim it was run.
+Minor changes that do not affect the project description do not require the skill, unless `.ai/project/project.md` is missing or the user explicitly requests a documentation update.
 
-Minor changes that do not affect the project description do not require running the skill.
+If the skill cannot be retrieved or executed when required, report this explicitly. Do not claim it was run.
