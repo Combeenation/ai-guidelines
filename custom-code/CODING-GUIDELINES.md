@@ -27,7 +27,9 @@ TypeScript
 - Prefer early returns, ?. and ?? over deep nesting. Use non-null ! only for guaranteed values. Avoid defensive checks without a realistic failure case.
 - Do not use any or @ts-ignore. Restrict eslint-disable to justified, local cases. Do not invoke functions through a ternary; use if/else.
 - Handle recoverable errors where they occur, using contextual console.warn or console.error (IDs, values). Keep the configurator usable when possible. Avoid broad or nested try/catch blocks.
-- Comment sparingly to explain why, ideally with a rule or ticket ID. Use // TODO:, // NOTE: and // WORKAROUND: consistently. Add JSDoc only for non-obvious contracts or behavior.
+- Do not add function descriptions or JSDoc function summaries.
+- Use comments sparingly and only where needed to understand the code or its reasoning. Use // TODO:, // NOTE: and // WORKAROUND: consistently where applicable.
+- Use blank lines and spacing according to context to separate logical steps, conditionals and comment blocks. Keep closely related statements together and follow the project's formatter.
 
 Translations and project data
 - Never hardcode user-facing UI text. Return or reference translation keys instead. Keys must be at most 30 characters and must not start with a digit.
