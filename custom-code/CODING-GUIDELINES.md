@@ -20,16 +20,18 @@ Structure and naming
 TypeScript
 - Use named function declarations at module level and export function for public entry points. No exported arrow functions or export default. Local callbacks may be arrows.
 - Prefer async/await over .then() chains. Do not add unnecessary type arguments such as <void> to calls.
+- Avoid fire-and-forget async calls with void and inline .catch() logging. Await async operations and handle errors at an appropriate level instead.
 - Use string enums for fixed identifiers instead of repeated literals, for example export enum CtrlNames { JS_Viewer3d = 'JS_Viewer3d' }.
 - Name constants UPPER_SNAKE_CASE, prefix private module constants with _, and define them only when useful. If shared mutable module state is required, use export let UPPER_SNAKE_CASE; only its owning module may assign it.
 - Prefer type; use interface with an I prefix for structured data contracts. Declare function return types only when they add clarity or are required.
 - In classes, declare public/private explicitly. Use a static async create(...) factory when construction needs asynchronous setup.
 - Prefer early returns, ?. and ?? over deep nesting. Use non-null ! only for guaranteed values. Avoid defensive checks without a realistic failure case.
 - Do not use any or @ts-ignore. Restrict eslint-disable to justified, local cases. Do not invoke functions through a ternary; use if/else.
-- Handle recoverable errors where they occur, using contextual console.warn or console.error (IDs, values). Keep the configurator usable when possible. Avoid broad or nested try/catch blocks.
+- Handle recoverable errors where they occur, using contextual console.warn or console.error (IDs, values). Keep the configurator usable when possible. Avoid try/catch; use it only when necessary for meaningful error handling.
+- Throw errors for missing values only when they are expected to occur frequently and require explicit error handling. Otherwise, prefer a simple early return.
 - Do not add function descriptions or JSDoc function summaries.
 - Use comments sparingly and only where needed to understand the code or its reasoning. Use // TODO:, // NOTE: and // WORKAROUND: consistently where applicable.
-- Use blank lines and spacing according to context to separate logical steps, conditionals and comment blocks. Keep closely related statements together and follow the project's formatter.
+- Separate logical steps such as data preparation, validation, processing and return values with one blank line. Add a blank line before and after guard clauses and control-flow blocks when they border other steps. Keep closely related assignments and short sequences of related guards together. Do not insert blank lines mechanically after every statement. Follow the project's formatter.
 
 Translations and project data
 - Never hardcode user-facing UI text. Return or reference translation keys instead. Keys must be at most 30 characters and must not start with a digit.
