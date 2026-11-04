@@ -12,7 +12,7 @@ Communication and scope
 Structure and naming
 - Group files by domain (3d/, 2d/, checkout/, misc/, typings/). Use kebab-case filenames with a domain prefix and, where applicable, a role suffix (mgr, utils, helper, service). Domain prefixes may also appear inside domain folders.
 - Place exported entry functions first, followed by internal helpers in call order. Separate private helpers with // PRIVATE FUNCTIONS between two // ----------------- lines. Use uppercase section labels in longer files or classes.
-- Use module-specific initialization functions such as initViewerMgr(). Compose initialization in index.ts inside CfgrUtils.onCfgrReady(async () => { ... }) when the project uses a central entry point. await modules in dependency order. Not every initializer must live in index.ts.
+- Use module-specific initialization functions such as initViewerMgr(). Compose central initialization in an async initCfgr() function in index.ts and call initCfgr() there. Await asynchronous initializers in dependency order, then expose any required values on window.CbnCustomCode. Not every initializer must live in index.ts.
 - Keep shared identifiers (for example CtrlNames, node and tag names) in constants.ts. Keep typings/cfgr-defs.generated.ts generated. Never edit .generated.ts manually; create missing controls or columns in Combeenation and regenerate.
 - Include units in variable names (widthMM, depthM) and centralize unit conversion.
 - Split oversized files by responsibility. Avoid unnecessary module-level state and constants.
