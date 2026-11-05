@@ -7,6 +7,7 @@ Communication and scope
 - Write code and code comments in English. Never use em or en dashes in any text, including chat, documentation, commits and comments. Use commas, colons, parentheses or separate sentences instead.
 - Report changes, relevant findings and open questions concisely. Do not narrate investigation steps.
 - Ask when a requirement is materially unclear. When a decision is needed, recommend one approach.
+- Do not invent missing data. Communicate immediately when required data is missing.
 - Make narrowly scoped changes. Prefer simple solutions over speculative fixes, unnecessary abstractions, excessive edge-case handling or redundant safety checks.
 
 Structure and naming
@@ -18,7 +19,7 @@ Structure and naming
 - Split oversized files by responsibility. Avoid unnecessary module-level state and constants.
 
 TypeScript
-- Use named function declarations at module level and export function for public entry points. No exported arrow functions or export default. Local callbacks may be arrows.
+- Use named function declarations at module level and export function for public entry points. Do not declare functions inside other functions. Local callbacks may be arrows. No exported arrow functions or export default.
 - Prefer async/await over .then() chains. Do not add unnecessary type arguments such as <void> to calls.
 - Avoid fire-and-forget async calls with void and inline .catch() logging. Await async operations and handle errors at an appropriate level instead.
 - Use string enums for fixed identifiers instead of repeated literals, for example export enum CtrlNames { JS_Viewer3d = 'JS_Viewer3d' }.
